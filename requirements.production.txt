@@ -1,0 +1,8 @@
+Flask
+flask-sqlalchemy
+flask-login
+itsdangerous
+gunicorn
+Werkzeug
+psycopg2-binary
+

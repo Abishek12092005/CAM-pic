@@ -1,0 +1,3 @@
+# Debug helper (optional): run gunicorn with explicit module/worker settings
+web: gunicorn app:app --workers=1 --worker-tmp-dir /dev/shm
+
