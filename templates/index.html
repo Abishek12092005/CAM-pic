@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+  <div class="card" style="text-align:center">
+    <h1 style="margin-top:8px; margin-bottom:6px">Pic your memories. Save them forever.</h1>
+    <p style="color:var(--muted); margin-top:0">Guest mode lets you capture instantly without an account. Later, transfer to your profile.</p>
+    <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:16px">
+      <a class="btn primary" href="/guest-camera">Continue as Guest</a>
+      <a class="btn" href="/login">Login</a>
+      <a class="btn ghost" href="/register">Register</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

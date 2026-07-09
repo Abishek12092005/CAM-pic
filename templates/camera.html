@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container camera-wrap">
+    <div class="video-wrap">
+        <video id="video" autoplay playsinline></video>
+        <canvas id="capture-canvas" style="display:none"></canvas>
+        <div id="flash"></div>
+        <div id="countdown"></div>
+        
+    </div>
+
+    <div class="controls">
+        <div style="flex: 1;"></div>
+        
+        <button id="capture-btn" class="capture"></button>
+
+        <div class="seg" style="flex: 1; justify-content: flex-end;">
+            <select class="input" id="timer-select" style="width: auto; padding: 5px;">
+                <option value="0">No Timer</option>
+                <option value="3">3s</option>
+                <option value="5">5s</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="card" style="padding: 10px 15px;">
+        <div class="filter-tray">
+            <label class="filter-item">
+                <input type="radio" name="filter" value="none" checked>
+                <div class="filter-lens lens-none"></div>
+                <span class="filter-label">Normal</span>
+            </label>
+            <label class="filter-item">
+                <input type="radio" name="filter" value="grayscale">
+                <div class="filter-lens lens-bw"></div>
+                <span class="filter-label">B&W</span>
+            </label>
+            <label class="filter-item">
+                <input type="radio" name="filter" value="sepia">
+                <div class="filter-lens lens-sepia"></div>
+                <span class="filter-label">Sepia</span>
+            </label>
+            <label class="filter-item">
+                <input type="radio" name="filter" value="contrast">
+                <div class="filter-lens lens-vivid"></div>
+                <span class="filter-label">Vivid</span>
+            </label>
+            <label class="filter-item">
+                <input type="radio" name="filter" value="invert">
+                <div class="filter-lens lens-invert"></div>
+                <span class="filter-label">Negative</span>
+            </label>
+            <label class="filter-item">
+                <input type="radio" name="filter" value="hue">
+                <div class="filter-lens lens-hue"></div>
+                <span class="filter-label">Alien</span>
+            </label>
+            <label class="filter-item">
+                <input type="radio" name="filter" value="vintage">
+                <div class="filter-lens lens-vintage"></div>
+                <span class="filter-label">Vintage</span>
+            </label>
+            <label class="filter-item">
+                <input type="radio" name="filter" value="night">
+                <div class="filter-lens lens-night"></div>
+                <span class="filter-label">Night</span>
+            </label>
+        </div>
+    </div>
+
+    <div id="preview-area" class="preview">
+        <p>Last Capture:</p>
+        <img id="preview" src="" alt="Preview" />
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/camera.js"></script>
+{% endblock %}

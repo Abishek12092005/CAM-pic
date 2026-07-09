@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+  <div class="card" style="max-width:520px; margin: 14px auto">
+    <h2>Edit profile</h2>
+    <form id="profile-form" enctype="multipart/form-data">
+      <label style="display:block; margin-top:12px">Username</label>
+      <input class="input" name="username" value="{{ current_user.username }}" required />
+
+      <label style="display:block; margin-top:12px">Profile image</label>
+      <input class="input" name="profile_image" type="file" accept="image/*" />
+
+      <button class="btn primary" type="submit" style="width:100%; margin-top:16px">Save</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/profile.js"></script>
+{% endblock %}
+

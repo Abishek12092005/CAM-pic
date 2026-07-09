@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="card" style="margin-bottom: 20px;">
+        <div style="display: flex; gap: 10px;">
+            <input type="date" id="date-from" class="input" placeholder="From">
+            <input type="date" id="date-to" class="input" placeholder="To">
+            <button id="search-btn" class="btn primary">Search</button>
+        </div>
+    </div>
+
+    <div id="mem-grid" class="mem-grid">
+        <!-- Images loaded via memories.js -->
+    </div>
+    <div id="scroll-sentinel" style="height: 20px;"></div>
+</div>
+
+<!-- Full Screen Viewer Modal -->
+<div id="viewer-modal" class="modal">
+    <div class="modal-inner">
+        <div class="viewer">
+            <div class="head">
+                <span>Memory</span>
+                <button class="btn ghost close">Close</button>
+            </div>
+            <img id="viewer-img" src="" alt="Full view">
+            <div style="padding: 15px; display: flex; justify-content: center;">
+                <button class="btn primary viewer-download">Download Image</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/api.js"></script>
+<script src="/static/js/memories.js"></script>
+{% endblock %}

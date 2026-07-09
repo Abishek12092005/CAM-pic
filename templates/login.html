@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="card auth-container" style="max-width: 400px; margin: 40px auto;">
+        <h2 class="name" style="text-align:center; width:100%;">LOGIN to CAM <span class="accent">pics</span></h2>
+        
+        <!-- Password Login Form -->
+<form id="password-login-form" style="display: block;">
+            <input type="email" id="email" class="input" placeholder="Email" required>
+            <div style="height: 12px;"></div>
+            <input type="password" id="password" class="input" placeholder="Password" required>
+            <div style="height: 14px;"></div>
+            <button type="submit" class="btn primary" style="width: 100%; margin-top: 0;">Login with Password</button>
+        </form>
+
+
+
+        <p style="margin-top: 10px; font-size: 13px;"><a href="/forgot-password" style="color: var(--muted);">Forgot Password?</a></p>
+        <p style="margin-top: 15px; font-size: 14px;">Don't have an account? <a href="/register" style="color: var(--accent);">Register</a></p>
+        
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+const passwordLoginForm = document.getElementById('password-login-form');
+
+
+
+
+passwordLoginForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    try {
+        await apiFetch('/api/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: { email, password }
+        });
+        window.location.href = '/camera';
+    } catch (err) {
+        toast(err.message, 'error');
+    }
+});
+
+
+</script>
+{% endblock %}

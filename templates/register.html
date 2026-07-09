@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="card auth-container" style="max-width: 400px; margin: 40px auto;">
+        <h2 class="name" style="text-align:center; width:100%;">JOIN to CAM <span class="accent">pics</span></h2>
+<form id="reg-form">
+            <input type="text" id="username" class="input" placeholder="Username" required> 
+            <div style="height: 12px;"></div>
+            <input type="email" id="email" class="input" placeholder="Email" required>
+            <div style="height: 12px;"></div>
+            <input type="password" id="password" class="input" placeholder="Password" required>
+            <div style="height: 14px;"></div>
+            <button type="submit" class="btn primary" style="width: 100%; margin-top: 0;">Create Account</button>
+        </form>
+        <p style="margin-top: 15px; font-size: 14px;">Already have an account? <a href="/login" style="color: var(--accent);">Login</a></p>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.getElementById('reg-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const username = document.getElementById('username').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    try {
+        await apiFetch('/api/register', {
+            method: 'POST',
+            body: { username, email, password }
+        });
+        window.location.href = '/camera';
+    } catch (err) {
+        toast(err.message, 'error');
+    }
+});
+</script>
+{% endblock %}
